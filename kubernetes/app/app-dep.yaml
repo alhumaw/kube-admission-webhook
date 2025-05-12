@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webhook
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webhook
+  template:
+    metadata:
+      labels:
+        app: webhook
+    spec:
+      containers:
+      - name: webhook
+        image: alhumaw/webhook:latest
+        ports:
+        - containerPort: 443
+        volumeMounts:
+        - name: tls
+          mountPath: /etc/webhook/tls
+          readOnly: true
+      volumes:
+      - name: tls
+        secret:
+          secretName: webhook-tls
