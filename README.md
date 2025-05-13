@@ -6,7 +6,7 @@
 - 
 ## How it Works
 - When building a container image the API that this webhook utilizes will flag potentially dangerous conatiners to initialized.
-- Once flagged the webhook will reject building the image based on CVE's pulled from `find.cve.com`.
+- Once flagged the webhook will reject building the image based on CVE's pulled utlizing `grype`.
 - If the version of the image version is below High then the image will be built with no obstruction.
 
 ## To Run
